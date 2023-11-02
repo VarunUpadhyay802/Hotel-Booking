@@ -18,13 +18,18 @@ const RegisterPage = () => {
         setPassword(ev.target.value);
     };
 
-    function registerUSer(ev) {
+   async function registerUSer(ev) {
         ev.preventDefault();
-        axios.post('/register', {
+      try {
+        await  axios.post('/register', {
             name,
             email,
             password,
         })
+        alert('Registration successful .Now you can log in ')
+      } catch (e) {
+        alert('Registration failed please try again later')
+      }
 
     }
     return (
