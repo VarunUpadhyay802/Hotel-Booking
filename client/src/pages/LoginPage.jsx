@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import  { useContext, useState } from 'react'
+import { Link, Navigate } from "react-router-dom";
 // import Header from '../Header'
-import { Link } from 'react-router-dom'
+import { UserContext } from '../UserContext';
 import axios from 'axios'
 
 
@@ -11,6 +12,8 @@ import axios from 'axios'
 const LoginPage = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [redirect, setRedirect] = useState(false);    
+   const {setUser}= useContext(UserContext);
     const handleEmailChange = (e) => {
         setEmail(e.target.value)
     }
@@ -21,13 +24,16 @@ const LoginPage = () => {
         ev.preventDefault();
         try {
             // const { data } = 
-            await axios.post('/api/login', { email, password });
-            // setUser(data);
+            const data= await axios.post('/api/login', { email, password });
+            setUser(data);
             alert('Login successful');
-            // setRedirect(true);
+            setRedirect(true);
         } catch (e) {
             alert('Login failed');
         }
+    }
+    if (redirect) {
+        return <Navigate to={'/'} />
     }
     return (
         <div className='mt-4 grow flex items-center justify-around'>
@@ -44,7 +50,7 @@ const LoginPage = () => {
                         onChange={handlePasswordChange}></input>
                     <button className='primary'>Login</button>
                     <div className='mt-2 text-center text-gray-500'>
-                        Don't have an account yet? <Link to={'/register'} className='underline text-black'>Register Now</Link>
+                       <p> Dont have an account yet?</p> <Link to={'/register'} className='underline text-black'>Register Now</Link>
                     </div>
                 </form>
             </div>

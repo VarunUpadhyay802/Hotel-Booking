@@ -18,18 +18,18 @@ const RegisterPage = () => {
         setPassword(ev.target.value);
     };
 
-   async function registerUSer(ev) {
+    async function registerUser(ev) {
         ev.preventDefault();
-      try {
-        await  axios.post('/register', {
-            name,
-            email,
-            password,
-        })
-        alert('Registration successful .Now you can log in ')
-      } catch (e) {
-        alert('Registration failed please try again later')
-      }
+        try {
+            await axios.post('/register', {
+                name,
+                email,
+                password,
+            })
+            alert('Registration successful .Now you can log in ')
+        } catch (e) {
+            alert('Registration failed please try again later')
+        }
 
     }
     return (
@@ -39,7 +39,7 @@ const RegisterPage = () => {
                     <h1 className='text-`4xl text-center mb-4'></h1>
                     <form
                         className='max-w-md mx-auto '
-                        onSubmit={registerUSer}>
+                        onSubmit={registerUser}>
                         <input type='text'
                             placeholder="varun upadhyay"
                             value={name}
