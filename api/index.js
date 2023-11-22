@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const User = require('./models/User.js');
 
 const Place = require('./models/Place.js');
-// const Booking = require('./models/Booking.js');
+const Booking = require('./models/Booking.js');
 const cookieParser = require('cookie-parser');
 const imageDownloader = require('image-downloader');
 const multer = require('multer');
