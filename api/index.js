@@ -25,6 +25,7 @@ app.use(
   cors({
     credentials: true,
     origin: 'http://localhost:5173',
+    origin : 'https://stay-finder-ten.vercel.app/'
     // origin: 'http://localhost:5174',
   })
 );
@@ -49,6 +50,7 @@ app.post('/register', async (req, res) => {
     const existingUser = User.find({
       email
     })
+    
     if(existingUser){
       res.status(500).json({
         message :"User already exists"
@@ -59,6 +61,7 @@ app.post('/register', async (req, res) => {
       email,
       password: bcrypt.hashSync(password, bcryptSalt),
     });
+    console.log("here");
     res.json(userDoc);
   } catch (error) {
     res.status(422).json(error);
