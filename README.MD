@@ -31,7 +31,7 @@ README-AI is a developer tool that automatically generates README markdown files
 
 <div style="display: flex; gap: 10px; ">
   <img src="image-6.png" alt="alt text" style="width: 43%;">
-  <img src="image-7.png" alt="alt text" style="width: 43%;">
+  <img src="image-8.png" alt="alt text" style="width: 43%;">
 </div>
 
 
