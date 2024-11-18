@@ -5,7 +5,8 @@ import {Navigate} from "react-router-dom";
 import {UserContext} from "./UserContext.jsx";
 import PropTypes from 'prop-types'; // Import PropTypes
 export default function BookingWidget({place}) {
-  const [checkIn,setCheckIn] = useState('');
+  const today = new Date().toISOString().slice(0, 10)
+  const [checkIn, setCheckIn] = useState(today);
   const [checkOut,setCheckOut] = useState('');
   const [numberOfGuests,setNumberOfGuests] = useState(1);
   const [name,setName] = useState('');

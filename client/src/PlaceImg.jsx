@@ -6,7 +6,7 @@ export default function PlaceImg({ place, index = 0, className = null }) {
   }
 
   if (!className) {
-    className = 'object-cover';
+    className = 'object-cover rounded-md';
   }
 
   return (
