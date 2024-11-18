@@ -25,7 +25,7 @@ app.use(
   cors({
     credentials: true,
     origin: 'http://localhost:5173',
-    origin : 'https://stay-finder-ten.vercel.app/'
+    origin: 'https://stay-finder-ten.vercel.app/'
     // origin: 'http://localhost:5174',
   })
 );
@@ -50,10 +50,10 @@ app.post('/register', async (req, res) => {
     const existingUser = User.find({
       email
     })
-    
-    if(existingUser){
+
+    if (existingUser) {
       res.status(500).json({
-        message :"User already exists"
+        message: "User already exists"
       })
     }
     const userDoc = await User.create({
@@ -73,26 +73,26 @@ app.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
     const userDoc = await User.findOne({ email });
-  if (userDoc) {
-    const passOk = bcrypt.compareSync(password, userDoc.password);
-    if (passOk) {
-      jwt.sign({
-        email: userDoc.email,
-        id: userDoc._id
-      }, jwtSecret, {}, (err, token) => {
-        if (err) throw err;
-        res.cookie('token', token).json(userDoc);
-      });
+    if (userDoc) {
+      const passOk = bcrypt.compareSync(password, userDoc.password);
+      if (passOk) {
+        jwt.sign({
+          email: userDoc.email,
+          id: userDoc._id
+        }, jwtSecret, {}, (err, token) => {
+          if (err) throw err;
+          res.cookie('token', token).json(userDoc);
+        });
+      } else {
+        res.status(422).json('pass not ok');
+      }
     } else {
-      res.status(422).json('pass not ok');
+      res.json('not found');
     }
-  } else {
-    res.json('not found');
-  }
   } catch (error) {
-    res.status(500).send("Error while login " , error.message)
+    res.status(500).send("Error while login ", error.message)
   }
-  
+
 });
 
 app.get('/profile', (req, res) => {
@@ -217,7 +217,7 @@ app.get('/bookings', async (req, res) => {
 connectDB().then(() => {
   console.log("Connected to the DB Successfully")
   app.listen(4000, () => {
-      console.log(`server is running on port 4000`)
+    console.log(`server is running on port 4000`)
   })
 }).catch((err) => {
   console.log(err)

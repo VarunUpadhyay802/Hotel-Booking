@@ -12,14 +12,14 @@
 
 
 ---
-
+<!-- 
 ## 🔮 Overview
 
-README-AI is a developer tool that automatically generates README markdown files using a robust repository processing engine and advanced language models. Simply provide a URL or path to your codebase, and a well-structured and detailed README will be generated.
+README-AI is a developer tool that automatically generates README markdown files using a robust repository processing engine and advanced language models. Simply provide a URL or path to your codebase, and a well-structured and detailed README will be generated. -->
 
 ## 👾 Demo
 
-**Screen Shots**
+
 
 **Screen Shots**
 
